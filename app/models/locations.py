@@ -8,6 +8,7 @@ from .base import IDMixin, TimeStampMixin
 
 
 class Location(Base, IDMixin, TimeStampMixin):
+    
     __tablename__ = "locations"
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -28,5 +29,3 @@ class Location(Base, IDMixin, TimeStampMixin):
     target: Mapped[str]
     description: Mapped[str | None]
     suicide_bombing: Mapped[bool]
-
-    date_created: Mapped[datetime] = mapped_column(default=datetime.utcnow)
