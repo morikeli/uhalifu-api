@@ -64,5 +64,5 @@ class LocationService:
         if suicide_attack:
             stmt = stmt.where(Location.suicide_bombing == suicide_attack)
 
-        result = await self.db.execute(stmt)
+        result = await self.db.execute(stmt.offset(offset).limit(limit))
         return result.scalars().all()
