@@ -69,6 +69,27 @@ class Incident(BaseModel):
 
     class Config:
         from_attributes = True
+    
+
+    @model_validator(mode="before")
+    @classmethod
+    def wrap_flat_fields(cls, data: Any) -> Any:
+        # Check if the data is a SQLAlchemy model (has an __dict__) 
+        # or a dictionary from the DB and wrap fields
+        if hasattr(data, "__dict__"):
+            row = data.__dict__
+        else:
+            row = data
+
+        # Wrap the flat fields into the nested keys the schema expects
+        return {
+            "date": row,
+            "description": row.get("description"),
+            "attack_type": row.get("attack_type"),
+            "target": row.get("target"),
+            "suicide_bombing": row.get("suicide_bombing"),
+        }
+
 
 
 class CreateLocation(Location, Incident):
