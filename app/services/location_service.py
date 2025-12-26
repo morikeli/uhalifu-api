@@ -41,6 +41,12 @@ class LocationService:
             Location.year == year,
         )
 
+        if city:
+            stmt = stmt.where(Location.city == city)
+
+        if province:
+            stmt = stmt.where(Location.province == province)
+
         if region:
             stmt = stmt.where(Location.region == region)
 
@@ -49,6 +55,9 @@ class LocationService:
 
         if day:
             stmt = stmt.where(Location.day == day)
+        
+        if suicide_attack:
+            stmt = stmt.where(Location.suicide_bombing == suicide_attack)
 
         result = await self.db.execute(stmt)
         return result.scalars().all()
