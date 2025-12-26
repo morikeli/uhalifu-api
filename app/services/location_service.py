@@ -38,10 +38,13 @@ class LocationService:
             - province
         """
 
-        stmt = select(Location).where(
-            Location.country == country,
-            Location.year == year,
-        )
+        stmt = select(Location)
+
+        if country:
+            stmt = stmt.where(Location.country == country)
+
+        if year:
+            stmt = stmt.where(Location.year == year)
 
         if city:
             stmt = stmt.where(Location.city == city)
