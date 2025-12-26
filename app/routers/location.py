@@ -20,3 +20,31 @@ async def fetch_all_locations(
     service: LocationService = Depends(get_location_service),
 ):
     return await service.get_locations(offset=offset, limit=limit)
+
+
+@router.get("/location", response_model=List[LocationResponse])
+async def filter_location(
+    offset: Optional[int] = Query(0, ge=0),
+    limit: Optional[int]  = Query(100, ge=0, le=1000),
+    country: Optional[str] = Query(None),
+    city: Optional[str] = Query(None),
+    region: Optional[str] = Query(None),
+    province: Optional[str] = Query(None),
+    year: Optional[int] = Query(None, gt=1970),
+    month: Optional[int] = Query(None, le=1, ge=12),
+    day: Optional[int] = Query(None, le=1, ge=31),
+    suicide_attack: Optional[bool] = Query(False),
+    service: LocationService = Depends(get_location_service),
+):
+    return await service.filter_by_location(
+        offset=offset,
+        limit=limit,
+        country=country,
+        city=city,
+        region=region,
+        year=year,
+        month=month,
+        day=day,
+        province=province,
+        suicide_attack=suicide_attack,
+    )
