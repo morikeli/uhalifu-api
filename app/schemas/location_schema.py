@@ -61,9 +61,7 @@ class Incident(BaseModel):
         from_attributes (bool): Allows the model to be created from attributes.
     """
 
-    year: int
-    month: int
-    day: Optional[int]
+    date: IncidentDate
     description: Optional[str]
     attack_type: str
     target: str
