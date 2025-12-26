@@ -104,6 +104,7 @@ class CreateLocation(Location, Incident):
 
     pass
 
+
 class LocationResponse(BaseModel):
     """
     LocationResponse is a Pydantic model that represents the response structure for a location-related API.
