@@ -18,6 +18,8 @@ class LocationService:
 
     async def filter_by_location(
         self,
+        offset: int = 0,
+        limit: int = 100,
         country: Optional[str] = None,
         city: Optional[str] = None,
         province: Optional[str] = None,
