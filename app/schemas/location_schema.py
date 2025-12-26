@@ -33,7 +33,7 @@ class Incident(BaseModel):
     Attributes:
         year (int): The year the incident occurred.
         month (int): The month the incident occurred (1-12).
-        day (int): The day the incident occurred (1-31).
+        date: A nested model representing the date the incident occurred.
         attack_type (str): The type of attack (e.g., bombing, shooting).
         target (str): The target of the attack (e.g., civilian, military).
         suicide_bombing (bool): Indicates whether the attack involved a suicide bombing.
@@ -74,7 +74,7 @@ class LocationResponse(BaseModel):
         id (int): The unique identifier for the location.
         date_created (datetime): The timestamp when the location was created.
         location (Location): A nested model representing the geographical details of the location.
-        event (Incident): A nested model representing the incident associated with the location.
+        incident (Incident): A nested model representing the incident associated with the location.
     
     Config:
         from_attributes (bool): Enables the model to accept attributes from the ORM model.
