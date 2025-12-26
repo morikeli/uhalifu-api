@@ -19,10 +19,13 @@ class LocationService:
     async def filter_by_location(
         self,
         country: Optional[str] = None,
+        city: Optional[str] = None,
+        province: Optional[str] = None,
         region: Optional[str] = None,
-        year: Optional[date.year] = None,
+        year: Optional[int] = date.year,
         month: Optional[date.month] = None,
         day: Optional[date.day] = None,
+        suicide_attack: Optional[bool] = None,
     ):
         """
         Filter by:
