@@ -26,6 +26,25 @@ class Location(BaseModel):
     class Config:
         from_attributes = True
 
+
+class IncidentDate(BaseModel):
+    """
+    Represents the date of an incident.
+    
+    Attributes:
+        year (int): The year of the incident.
+        month (int): The month of the incident (1-12).
+        day (Optional[int]): The day of the incident (1-31), optional if only year and month are known.
+    """
+
+    year: int
+    month: int
+    day: Optional[int]
+
+    class Config:
+        from_attributes = True
+
+
 class Incident(BaseModel):
     """
     Incident model representing a recorded attack incident.
