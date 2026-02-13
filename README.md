@@ -68,7 +68,7 @@ API documentation is available at:
 * Redoc → `http://localhost:8000/api/v1/redoc`
 
 ---
-> [!MISCELLANEOUS]
+> [!IMPORTANT]
 >
 > If you wish to apply linting or script formatting using uv, run the following commands:
 
